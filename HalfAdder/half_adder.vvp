@@ -1,0 +1,107 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000026fc4a6cff0 .scope module, "Half_adder_bh" "Half_adder_bh" 2 10;
+ .timescale -9 -9;
+    .port_info 0 /OUTPUT 1 "sum";
+    .port_info 1 /OUTPUT 1 "carry";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+o0000026fc49a9fd8 .functor BUFZ 1, C4<z>; HiZ drive
+v0000026fc4a6d310_0 .net "a", 0 0, o0000026fc49a9fd8;  0 drivers
+o0000026fc49aa008 .functor BUFZ 1, C4<z>; HiZ drive
+v0000026fc4a6d3b0_0 .net "b", 0 0, o0000026fc49aa008;  0 drivers
+v0000026fc49a46b0_0 .var "carry", 0 0;
+v0000026fc49a4750_0 .var "sum", 0 0;
+E_0000026fc49a8690 .event anyedge, v0000026fc4a6d310_0, v0000026fc4a6d3b0_0;
+S_0000026fc4a6d180 .scope module, "Half_adder_tb" "Half_adder_tb" 3 7;
+ .timescale -9 -9;
+v0000026fc49729b0_0 .var "a", 0 0;
+v0000026fc4972a50_0 .var "b", 0 0;
+v0000026fc4972af0_0 .net "carry", 0 0, L_0000026fc4973270;  1 drivers
+v0000026fc4972b90_0 .net "sum", 0 0, L_0000026fc49a5ca0;  1 drivers
+S_0000026fc4a6dae0 .scope module, "mut" "Half_adder_df" 3 10, 2 1 0, S_0000026fc4a6d180;
+ .timescale -9 -9;
+    .port_info 0 /OUTPUT 1 "sum";
+    .port_info 1 /OUTPUT 1 "carry";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_0000026fc49a5ca0 .functor XOR 1, v0000026fc49729b0_0, v0000026fc4972a50_0, C4<0>, C4<0>;
+L_0000026fc4973270 .functor AND 1, v0000026fc49729b0_0, v0000026fc4972a50_0, C4<1>, C4<1>;
+v0000026fc4a6dc70_0 .net "a", 0 0, v0000026fc49729b0_0;  1 drivers
+v0000026fc4a6dd10_0 .net "b", 0 0, v0000026fc4972a50_0;  1 drivers
+v0000026fc4972870_0 .net "carry", 0 0, L_0000026fc4973270;  alias, 1 drivers
+v0000026fc4972910_0 .net "sum", 0 0, L_0000026fc49a5ca0;  alias, 1 drivers
+S_0000026fc4a6d950 .scope module, "half_adder_gl" "half_adder_gl" 2 21;
+ .timescale -9 -9;
+    .port_info 0 /OUTPUT 1 "sum";
+    .port_info 1 /OUTPUT 1 "carry";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+o0000026fc49aa2d8 .functor BUFZ 1, C4<z>; HiZ drive
+o0000026fc49aa308 .functor BUFZ 1, C4<z>; HiZ drive
+L_0000026fc49f43e0 .functor XOR 1, o0000026fc49aa2d8, o0000026fc49aa308, C4<0>, C4<0>;
+L_0000026fc49f46f0 .functor AND 1, o0000026fc49aa2d8, o0000026fc49aa308, C4<1>, C4<1>;
+v0000026fc49f3160_0 .net "a", 0 0, o0000026fc49aa2d8;  0 drivers
+v0000026fc49f3840_0 .net "b", 0 0, o0000026fc49aa308;  0 drivers
+v0000026fc49f3c00_0 .net "carry", 0 0, L_0000026fc49f46f0;  1 drivers
+v0000026fc49f3fc0_0 .net "sum", 0 0, L_0000026fc49f43e0;  1 drivers
+    .scope S_0000026fc4a6cff0;
+T_0 ;
+    %wait E_0000026fc49a8690;
+    %load/vec4 v0000026fc4a6d310_0;
+    %load/vec4 v0000026fc4a6d3b0_0;
+    %xor;
+    %store/vec4 v0000026fc49a4750_0, 0, 1;
+    %load/vec4 v0000026fc4a6d310_0;
+    %load/vec4 v0000026fc4a6d3b0_0;
+    %and;
+    %store/vec4 v0000026fc49a46b0_0, 0, 1;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0000026fc4a6d180;
+T_1 ;
+    %vpi_call 3 15 "$display", "halfAdder demonstration " {0 0 0};
+    %vpi_call 3 17 "$monitor", " time : %0t | a : %0b| b:%0b | sum : %0b | carry : %0b", $time, v0000026fc49729b0_0, v0000026fc4972a50_0, v0000026fc4972b90_0, v0000026fc4972af0_0 {0 0 0};
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000026fc49729b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000026fc4972a50_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000026fc49729b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000026fc4972a50_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000026fc49729b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000026fc4972a50_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000026fc49729b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000026fc4972a50_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 3 28 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0000026fc4a6d180;
+T_2 ;
+    %vpi_call 3 33 "$dumpfile", "half_adder.vcd" {0 0 0};
+    %vpi_call 3 34 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000026fc4a6d180 {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./half_adder.v";
+    ".\half_adder_tb.v";
