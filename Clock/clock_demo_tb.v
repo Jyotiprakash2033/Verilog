@@ -2,7 +2,7 @@
 `include "clock_demo.v"
 
 module clock_demo_tb();
-output clk;
+wire clk;
 my_clock mut(clk);
 
 initial begin

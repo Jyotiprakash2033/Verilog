@@ -1,0 +1,8 @@
+//.txt file snippet, adding only 6 location (6 lines in the txt file), change/add data as per requirement, each line has hex data.
+
+23
+63 
+b3
+23
+73
+b3

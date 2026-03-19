@@ -1,0 +1,46 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000019d6a095ad0 .scope module, "reset_tb" "reset_tb" 2 4;
+ .timescale -12 -12;
+v0000019d6a095e90_0 .net "reset", 0 0, L_0000019d6a0487b0;  1 drivers
+S_0000019d6a095c60 .scope module, "mut" "my_reset" 2 7, 3 1 0, S_0000019d6a095ad0;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "reset";
+L_0000019d6a0487b0 .functor BUFZ 1, v0000019d6a095df0_0, C4<0>, C4<0>, C4<0>;
+v0000019d6a095df0_0 .var "c", 0 0;
+v0000019d6a062c70_0 .net "reset", 0 0, L_0000019d6a0487b0;  alias, 1 drivers
+    .scope S_0000019d6a095c60;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019d6a095df0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0000019d6a095c60;
+T_1 ;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000019d6a095df0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019d6a095df0_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0000019d6a095ad0;
+T_2 ;
+    %vpi_call 2 10 "$dumpfile", "reset.vcd" {0 0 0};
+    %vpi_call 2 11 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000019d6a095ad0 {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    ".\reset_tb.v";
+    "./reset.v";

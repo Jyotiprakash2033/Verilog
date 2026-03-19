@@ -1,0 +1,31 @@
+$date
+	Sun Mar 15 19:39:28 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module reset_tb $end
+$var wire 1 ! reset $end
+$scope module mut $end
+$var wire 1 ! reset $end
+$var reg 1 " c $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0"
+0!
+$end
+#20
+1!
+1"
+#25
+0!
+0"
