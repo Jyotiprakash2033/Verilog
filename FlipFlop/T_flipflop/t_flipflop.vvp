@@ -1,0 +1,149 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000196abca9ce0 .scope module, "t_flipflop_df" "t_flipflop_df" 2 1;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "q";
+    .port_info 1 /OUTPUT 1 "qbar";
+    .port_info 2 /INPUT 1 "t";
+    .port_info 3 /INPUT 1 "clk";
+o00000196abcbc188 .functor BUFZ 1, C4<z>; HiZ drive
+L_00000196abca6f50 .functor AND 1, L_00000196abca6cb0, o00000196abcbc188, C4<1>, C4<1>;
+o00000196abcbc0f8 .functor BUFZ 1, C4<z>; HiZ drive
+L_00000196abca6fc0 .functor AND 1, L_00000196abca6f50, o00000196abcbc0f8, C4<1>, C4<1>;
+L_00000196abca6e70 .functor OR 1, L_00000196abca6fc0, L_00000196abca6a80, C4<0>, C4<0>;
+L_00000196abca6cb0 .functor NOT 1, L_00000196abca6e70, C4<0>, C4<0>, C4<0>;
+L_00000196abca6ee0 .functor AND 1, L_00000196abca6a80, o00000196abcbc188, C4<1>, C4<1>;
+L_00000196abca69a0 .functor AND 1, L_00000196abca6ee0, o00000196abcbc0f8, C4<1>, C4<1>;
+L_00000196abca6d20 .functor OR 1, L_00000196abca69a0, L_00000196abca6cb0, C4<0>, C4<0>;
+L_00000196abca6a80 .functor NOT 1, L_00000196abca6d20, C4<0>, C4<0>, C4<0>;
+v00000196abcb9390_0 .net *"_ivl_0", 0 0, L_00000196abca6f50;  1 drivers
+v00000196abcb9430_0 .net *"_ivl_10", 0 0, L_00000196abca69a0;  1 drivers
+v00000196abcb6fd0_0 .net *"_ivl_12", 0 0, L_00000196abca6d20;  1 drivers
+v00000196abd088d0_0 .net *"_ivl_2", 0 0, L_00000196abca6fc0;  1 drivers
+v00000196abd090f0_0 .net *"_ivl_4", 0 0, L_00000196abca6e70;  1 drivers
+v00000196abd09230_0 .net *"_ivl_8", 0 0, L_00000196abca6ee0;  1 drivers
+v00000196abd09550_0 .net "clk", 0 0, o00000196abcbc0f8;  0 drivers
+v00000196abd09370_0 .net "q", 0 0, L_00000196abca6a80;  1 drivers
+v00000196abd08ab0_0 .net "qbar", 0 0, L_00000196abca6cb0;  1 drivers
+v00000196abd094b0_0 .net "t", 0 0, o00000196abcbc188;  0 drivers
+S_00000196abcb9070 .scope module, "t_flipflop_gate" "t_flipflop_gate" 2 26;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "q";
+    .port_info 1 /OUTPUT 1 "qbar";
+    .port_info 2 /INPUT 1 "t";
+    .port_info 3 /INPUT 1 "clk";
+o00000196abcbc308 .functor BUFZ 1, C4<z>; HiZ drive
+o00000196abcbc278 .functor BUFZ 1, C4<z>; HiZ drive
+L_00000196abca6af0 .functor AND 1, L_00000196abca6b60, o00000196abcbc308, o00000196abcbc278, C4<1>;
+L_00000196abca6b60 .functor NOR 1, L_00000196abca6af0, L_00000196abd0ab70, C4<0>, C4<0>;
+L_00000196abca6d90 .functor AND 1, L_00000196abd0ab70, o00000196abcbc308, o00000196abcbc278, C4<1>;
+L_00000196abd0ab70 .functor NOR 1, L_00000196abca6d90, L_00000196abca6b60, C4<0>, C4<0>;
+v00000196abd08dd0_0 .net "clk", 0 0, o00000196abcbc278;  0 drivers
+v00000196abd08c90_0 .net "q", 0 0, L_00000196abd0ab70;  1 drivers
+v00000196abd09690_0 .net "qbar", 0 0, L_00000196abca6b60;  1 drivers
+v00000196abd09190_0 .net "t", 0 0, o00000196abcbc308;  0 drivers
+v00000196abd08a10_0 .net "w1", 0 0, L_00000196abca6af0;  1 drivers
+v00000196abd092d0_0 .net "w2", 0 0, L_00000196abca6d90;  1 drivers
+S_00000196abcb9200 .scope module, "t_flipflop_tb" "t_flipflop_tb" 3 6;
+ .timescale -12 -12;
+v00000196abd08bf0_0 .net "clk", 0 0, L_00000196abd0ab00;  1 drivers
+v00000196abd097d0_0 .net "q", 0 0, v00000196abd095f0_0;  1 drivers
+v00000196abd08b50_0 .net "qbar", 0 0, L_00000196abd0ad30;  1 drivers
+v00000196abd08d30_0 .var "t", 0 0;
+S_00000196abcb7070 .scope module, "mut" "t_flipflop_bh" 3 14, 2 9 0, S_00000196abcb9200;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "q";
+    .port_info 1 /OUTPUT 1 "qbar";
+    .port_info 2 /INPUT 1 "t";
+    .port_info 3 /INPUT 1 "clk";
+L_00000196abd0ad30 .functor NOT 1, v00000196abd095f0_0, C4<0>, C4<0>, C4<0>;
+v00000196abd08fb0_0 .net "clk", 0 0, L_00000196abd0ab00;  alias, 1 drivers
+v00000196abd095f0_0 .var "q", 0 0;
+v00000196abd08970_0 .net "qbar", 0 0, L_00000196abd0ad30;  alias, 1 drivers
+v00000196abd09410_0 .net "t", 0 0, v00000196abd08d30_0;  1 drivers
+E_00000196abc6a8f0 .event posedge, v00000196abd08fb0_0;
+S_00000196abcb7200 .scope module, "mutt" "my_clock" 3 13, 4 3 0, S_00000196abcb9200;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "clk";
+L_00000196abd0ab00 .functor BUFZ 1, v00000196abd09730_0, C4<0>, C4<0>, C4<0>;
+v00000196abd09730_0 .var "c", 0 0;
+v00000196abd09050_0 .net "clk", 0 0, L_00000196abd0ab00;  alias, 1 drivers
+    .scope S_00000196abcb7200;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000196abd09730_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00000196abcb7200;
+T_1 ;
+    %delay 5, 0;
+    %load/vec4 v00000196abd09730_0;
+    %inv;
+    %store/vec4 v00000196abd09730_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00000196abcb7070;
+T_2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000196abd095f0_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_00000196abcb7070;
+T_3 ;
+    %wait E_00000196abc6a8f0;
+    %load/vec4 v00000196abd09410_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 1;
+    %cmp/u;
+    %jmp/1 T_3.0, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 1;
+    %cmp/u;
+    %jmp/1 T_3.1, 6;
+    %jmp T_3.2;
+T_3.0 ;
+    %load/vec4 v00000196abd095f0_0;
+    %store/vec4 v00000196abd095f0_0, 0, 1;
+    %jmp T_3.2;
+T_3.1 ;
+    %load/vec4 v00000196abd095f0_0;
+    %inv;
+    %store/vec4 v00000196abd095f0_0, 0, 1;
+    %jmp T_3.2;
+T_3.2 ;
+    %pop/vec4 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00000196abcb9200;
+T_4 ;
+    %vpi_call 3 22 "$display", "t flipflop demostration :" {0 0 0};
+    %vpi_call 3 23 "$monitor", "$time: %0t | clk : %0b | t: %0b |  q: %0b | qbar: %0b", $time, v00000196abd08bf0_0, v00000196abd08d30_0, v00000196abd097d0_0, v00000196abd08b50_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000196abd08d30_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000196abd08d30_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 3 29 "$finish" {0 0 0};
+    %end;
+    .thread T_4;
+    .scope S_00000196abcb9200;
+T_5 ;
+    %vpi_call 3 35 "$dumpfile", "t_flipflop.vcd" {0 0 0};
+    %vpi_call 3 36 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000196abcb9200 {0 0 0};
+    %end;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "./t_flipflop.v";
+    ".\t_flipflop_tb.v";
+    "./../../Clock/clock_demo.v";
