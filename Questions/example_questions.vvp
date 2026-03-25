@@ -1,0 +1,37 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000205a75c2df0 .scope module, "question1" "question1" 2 7;
+ .timescale 0 0;
+v00000205a75c2f80_0 .var/s "a", 3 0;
+v00000205a75c3020_0 .var/s "b", 3 0;
+v00000205a75c30c0_0 .var/s "y", 3 0;
+    .scope S_00000205a75c2df0;
+T_0 ;
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v00000205a75c30c0_0, 0, 4;
+    %load/vec4 v00000205a75c30c0_0;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %shiftr 4;
+    %store/vec4 v00000205a75c2f80_0, 0, 4;
+    %load/vec4 v00000205a75c30c0_0;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %shiftr/s 4;
+    %store/vec4 v00000205a75c3020_0, 0, 4;
+    %vpi_call 2 14 "$display", "In Binary : y = %b, a = %b (>>), b = %b (>>>)", v00000205a75c30c0_0, v00000205a75c2f80_0, v00000205a75c3020_0 {0 0 0};
+    %vpi_call 2 15 "$display", "In decimal : y = %0d, a = %0d (>>), b = %0d (>>>)", v00000205a75c30c0_0, v00000205a75c2f80_0, v00000205a75c3020_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    ".\example_questions.v";

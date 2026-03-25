@@ -1,0 +1,79 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000029f384f5950 .scope module, "examples_tb" "examples_tb" 2 4;
+ .timescale -12 -12;
+v0000029f3853fe30_0 .var "a", 0 0;
+v0000029f385401f0_0 .var "b", 0 0;
+v0000029f3853fc50_0 .net "y_and", 0 0, L_0000029f384ad3b0;  1 drivers
+v0000029f38540290_0 .net "y_not", 0 0, L_0000029f384f4040;  1 drivers
+v0000029f3853fb10_0 .net "y_or", 0 0, L_0000029f384f3b70;  1 drivers
+S_0000029f384f5ae0 .scope module, "mut" "my_and" 2 8, 3 1 0, S_0000029f384f5950;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "y";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000029f384ad9d0 .functor NAND 1, v0000029f3853fe30_0, v0000029f385401f0_0, C4<1>, C4<1>;
+L_0000029f384ad3b0 .functor NAND 1, L_0000029f384ad9d0, L_0000029f384ad9d0, C4<1>, C4<1>;
+v0000029f384c30d0_0 .net "a", 0 0, v0000029f3853fe30_0;  1 drivers
+v0000029f384c2eb0_0 .net "b", 0 0, v0000029f385401f0_0;  1 drivers
+v0000029f384f5c70_0 .net "nand_out", 0 0, L_0000029f384ad9d0;  1 drivers
+v0000029f384f5d10_0 .net "y", 0 0, L_0000029f384ad3b0;  alias, 1 drivers
+S_0000029f384ad5c0 .scope module, "mutt" "my_or" 2 9, 3 8 0, S_0000029f384f5950;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "y";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000029f384c32f0 .functor NAND 1, v0000029f3853fe30_0, v0000029f3853fe30_0, C4<1>, C4<1>;
+L_0000029f384f3b00 .functor NAND 1, v0000029f385401f0_0, v0000029f385401f0_0, C4<1>, C4<1>;
+L_0000029f384f3b70 .functor NAND 1, L_0000029f384c32f0, L_0000029f384f3b00, C4<1>, C4<1>;
+v0000029f384ad750_0 .net "a", 0 0, v0000029f3853fe30_0;  alias, 1 drivers
+v0000029f384ad7f0_0 .net "b", 0 0, v0000029f385401f0_0;  alias, 1 drivers
+v0000029f384ad890_0 .net "nand_out1", 0 0, L_0000029f384c32f0;  1 drivers
+v0000029f384ad930_0 .net "nand_out2", 0 0, L_0000029f384f3b00;  1 drivers
+v0000029f384c2850_0 .net "y", 0 0, L_0000029f384f3b70;  alias, 1 drivers
+S_0000029f384c28f0 .scope module, "muttt" "my_not" 2 10, 3 16 0, S_0000029f384f5950;
+ .timescale -12 -12;
+    .port_info 0 /OUTPUT 1 "y";
+    .port_info 1 /INPUT 1 "a";
+L_0000029f384f4040 .functor NAND 1, v0000029f3853fe30_0, v0000029f3853fe30_0, C4<1>, C4<1>;
+v0000029f384c2a80_0 .net "a", 0 0, v0000029f3853fe30_0;  alias, 1 drivers
+v0000029f384c2b20_0 .net "y", 0 0, L_0000029f384f4040;  alias, 1 drivers
+    .scope S_0000029f384f5950;
+T_0 ;
+    %vpi_call 2 12 "$monitor", "a=%b b=%b | y_and=%b |y_or=%b| y_not=%b", v0000029f3853fe30_0, v0000029f385401f0_0, v0000029f3853fc50_0, v0000029f3853fb10_0, v0000029f38540290_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000029f3853fe30_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000029f385401f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000029f3853fe30_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000029f385401f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000029f3853fe30_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000029f385401f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000029f3853fe30_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000029f385401f0_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 2 18 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    ".\examples_tb.v";
+    "./examples.v";
