@@ -6,6 +6,7 @@ module mux_4to1_df(cout,i0,i1,i2,i3,s0,s1);
  input s0,s1;
 
  assign cout = ((~s0 & ~s1 & i0) |(s0 & ~s1 & i1) |(s1 & ~s0 & i2) | (s0 & s1 & i3));
+ //assign cout = s1 ? (s0 ? i3 : i2) : (s0 ? i1 : i0); // Using conditional operator
 endmodule
 
 module mux_4to1_bh(cout,i0,i1,i2,i3,s0,s1);
